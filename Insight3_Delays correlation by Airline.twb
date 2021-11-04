@@ -1,0 +1,996 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20183.19.0123.2221                               -->
+<workbook original-version='18.1' source-build='2018.3.3 (20183.19.0123.2221)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='flights+' inline='true' name='federated.0h1rp9r0376yr20zj9hl116ygyo5' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='flights' name='textscan.1wk2jvy0qzvqpc1478j7s1l56a5g'>
+            <connection class='textscan' directory='C:/Users/argon/Documents/UDACITY/Business Analytics/Project 4/Final Project/flight-delays' filename='flights.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[flights.csv].[DESTINATION_AIRPORT]' />
+              <expression op='[airports.csv].[IATA_CODE_Airport]' />
+            </expression>
+          </clause>
+          <relation join='inner' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[flights.csv].[AIRLINE]' />
+                <expression op='[airlines.csv].[IATA_CODE_Airline]' />
+              </expression>
+            </clause>
+            <relation connection='textscan.1wk2jvy0qzvqpc1478j7s1l56a5g' name='flights.csv' table='[flights#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                <column datatype='integer' name='F1' ordinal='0' />
+                <column datatype='integer' name='Unnamed: 0' ordinal='1' />
+                <column datatype='integer' name='Unnamed: 0.1' ordinal='2' />
+                <column datatype='integer' name='YEAR' ordinal='3' />
+                <column datatype='integer' name='MONTH' ordinal='4' />
+                <column datatype='integer' name='DAY' ordinal='5' />
+                <column datatype='integer' name='DAY_OF_WEEK' ordinal='6' />
+                <column datatype='string' name='AIRLINE' ordinal='7' />
+                <column datatype='integer' name='FLIGHT_NUMBER' ordinal='8' />
+                <column datatype='string' name='TAIL_NUMBER' ordinal='9' />
+                <column datatype='string' name='ORIGIN_AIRPORT' ordinal='10' />
+                <column datatype='string' name='DESTINATION_AIRPORT' ordinal='11' />
+                <column datatype='integer' name='SCHEDULED_DEPARTURE' ordinal='12' />
+                <column datatype='real' name='DEPARTURE_TIME' ordinal='13' />
+                <column datatype='real' name='DEPARTURE_DELAY' ordinal='14' />
+                <column datatype='real' name='TAXI_OUT' ordinal='15' />
+                <column datatype='real' name='WHEELS_OFF' ordinal='16' />
+                <column datatype='real' name='SCHEDULED_TIME' ordinal='17' />
+                <column datatype='real' name='ELAPSED_TIME' ordinal='18' />
+                <column datatype='real' name='AIR_TIME' ordinal='19' />
+                <column datatype='integer' name='DISTANCE' ordinal='20' />
+                <column datatype='real' name='WHEELS_ON' ordinal='21' />
+                <column datatype='real' name='TAXI_IN' ordinal='22' />
+                <column datatype='integer' name='SCHEDULED_ARRIVAL' ordinal='23' />
+                <column datatype='real' name='ARRIVAL_TIME' ordinal='24' />
+                <column datatype='real' name='ARRIVAL_DELAY' ordinal='25' />
+                <column datatype='integer' name='DIVERTED' ordinal='26' />
+                <column datatype='integer' name='CANCELLED' ordinal='27' />
+                <column datatype='string' name='CANCELLATION_REASON' ordinal='28' />
+                <column datatype='real' name='AIR_SYSTEM_DELAY' ordinal='29' />
+                <column datatype='real' name='SECURITY_DELAY' ordinal='30' />
+                <column datatype='real' name='AIRLINE_DELAY' ordinal='31' />
+                <column datatype='real' name='LATE_AIRCRAFT_DELAY' ordinal='32' />
+                <column datatype='real' name='WEATHER_DELAY' ordinal='33' />
+              </columns>
+            </relation>
+            <relation connection='textscan.1wk2jvy0qzvqpc1478j7s1l56a5g' name='airlines.csv' table='[airlines#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                <column datatype='string' name='IATA_CODE_Airline' ordinal='0' />
+                <column datatype='string' name='AIRLINE' ordinal='1' />
+              </columns>
+            </relation>
+          </relation>
+          <relation connection='textscan.1wk2jvy0qzvqpc1478j7s1l56a5g' name='airports.csv' table='[airports#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='string' name='IATA_CODE_Airport' ordinal='0' />
+              <column datatype='string' name='AIRPORT' ordinal='1' />
+              <column datatype='string' name='CITY' ordinal='2' />
+              <column datatype='string' name='STATE' ordinal='3' />
+              <column datatype='string' name='COUNTRY' ordinal='4' />
+              <column datatype='real' name='LATITUDE' ordinal='5' />
+              <column datatype='real' name='LONGITUDE' ordinal='6' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[AIRLINE (airlines.csv)]' value='[airlines.csv].[AIRLINE]' />
+          <map key='[AIRLINE]' value='[flights.csv].[AIRLINE]' />
+          <map key='[AIRLINE_DELAY]' value='[flights.csv].[AIRLINE_DELAY]' />
+          <map key='[AIRPORT]' value='[airports.csv].[AIRPORT]' />
+          <map key='[AIR_SYSTEM_DELAY]' value='[flights.csv].[AIR_SYSTEM_DELAY]' />
+          <map key='[AIR_TIME]' value='[flights.csv].[AIR_TIME]' />
+          <map key='[ARRIVAL_DELAY]' value='[flights.csv].[ARRIVAL_DELAY]' />
+          <map key='[ARRIVAL_TIME]' value='[flights.csv].[ARRIVAL_TIME]' />
+          <map key='[CANCELLATION_REASON]' value='[flights.csv].[CANCELLATION_REASON]' />
+          <map key='[CANCELLED]' value='[flights.csv].[CANCELLED]' />
+          <map key='[CITY]' value='[airports.csv].[CITY]' />
+          <map key='[COUNTRY]' value='[airports.csv].[COUNTRY]' />
+          <map key='[DAY]' value='[flights.csv].[DAY]' />
+          <map key='[DAY_OF_WEEK]' value='[flights.csv].[DAY_OF_WEEK]' />
+          <map key='[DEPARTURE_DELAY]' value='[flights.csv].[DEPARTURE_DELAY]' />
+          <map key='[DEPARTURE_TIME]' value='[flights.csv].[DEPARTURE_TIME]' />
+          <map key='[DESTINATION_AIRPORT]' value='[flights.csv].[DESTINATION_AIRPORT]' />
+          <map key='[DISTANCE]' value='[flights.csv].[DISTANCE]' />
+          <map key='[DIVERTED]' value='[flights.csv].[DIVERTED]' />
+          <map key='[ELAPSED_TIME]' value='[flights.csv].[ELAPSED_TIME]' />
+          <map key='[F1]' value='[flights.csv].[F1]' />
+          <map key='[FLIGHT_NUMBER]' value='[flights.csv].[FLIGHT_NUMBER]' />
+          <map key='[IATA_CODE_Airline]' value='[airlines.csv].[IATA_CODE_Airline]' />
+          <map key='[IATA_CODE_Airport]' value='[airports.csv].[IATA_CODE_Airport]' />
+          <map key='[LATE_AIRCRAFT_DELAY]' value='[flights.csv].[LATE_AIRCRAFT_DELAY]' />
+          <map key='[LATITUDE]' value='[airports.csv].[LATITUDE]' />
+          <map key='[LONGITUDE]' value='[airports.csv].[LONGITUDE]' />
+          <map key='[MONTH]' value='[flights.csv].[MONTH]' />
+          <map key='[ORIGIN_AIRPORT]' value='[flights.csv].[ORIGIN_AIRPORT]' />
+          <map key='[SCHEDULED_ARRIVAL]' value='[flights.csv].[SCHEDULED_ARRIVAL]' />
+          <map key='[SCHEDULED_DEPARTURE]' value='[flights.csv].[SCHEDULED_DEPARTURE]' />
+          <map key='[SCHEDULED_TIME]' value='[flights.csv].[SCHEDULED_TIME]' />
+          <map key='[SECURITY_DELAY]' value='[flights.csv].[SECURITY_DELAY]' />
+          <map key='[STATE]' value='[airports.csv].[STATE]' />
+          <map key='[TAIL_NUMBER]' value='[flights.csv].[TAIL_NUMBER]' />
+          <map key='[TAXI_IN]' value='[flights.csv].[TAXI_IN]' />
+          <map key='[TAXI_OUT]' value='[flights.csv].[TAXI_OUT]' />
+          <map key='[Unnamed: 0.1]' value='[flights.csv].[Unnamed: 0.1]' />
+          <map key='[Unnamed: 0]' value='[flights.csv].[Unnamed: 0]' />
+          <map key='[WEATHER_DELAY]' value='[flights.csv].[WEATHER_DELAY]' />
+          <map key='[WHEELS_OFF]' value='[flights.csv].[WHEELS_OFF]' />
+          <map key='[WHEELS_ON]' value='[flights.csv].[WHEELS_ON]' />
+          <map key='[YEAR]' value='[flights.csv].[YEAR]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Unnamed: 0</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Unnamed: 0]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>Unnamed: 0</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Unnamed: 0.1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Unnamed: 0.1]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>Unnamed: 0.1</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>YEAR</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[YEAR]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>YEAR</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MONTH</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[MONTH]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>MONTH</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DAY</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[DAY]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>DAY</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DAY_OF_WEEK</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[DAY_OF_WEEK]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>DAY_OF_WEEK</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AIRLINE</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[AIRLINE]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>AIRLINE</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>FLIGHT_NUMBER</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[FLIGHT_NUMBER]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>FLIGHT_NUMBER</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TAIL_NUMBER</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[TAIL_NUMBER]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>TAIL_NUMBER</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ORIGIN_AIRPORT</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ORIGIN_AIRPORT]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>ORIGIN_AIRPORT</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DESTINATION_AIRPORT</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[DESTINATION_AIRPORT]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>DESTINATION_AIRPORT</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>SCHEDULED_DEPARTURE</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[SCHEDULED_DEPARTURE]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>SCHEDULED_DEPARTURE</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DEPARTURE_TIME</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[DEPARTURE_TIME]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>DEPARTURE_TIME</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DEPARTURE_DELAY</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[DEPARTURE_DELAY]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>DEPARTURE_DELAY</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TAXI_OUT</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[TAXI_OUT]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>TAXI_OUT</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>WHEELS_OFF</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[WHEELS_OFF]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>WHEELS_OFF</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>SCHEDULED_TIME</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[SCHEDULED_TIME]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>SCHEDULED_TIME</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ELAPSED_TIME</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[ELAPSED_TIME]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>ELAPSED_TIME</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AIR_TIME</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[AIR_TIME]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>AIR_TIME</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DISTANCE</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[DISTANCE]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>DISTANCE</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>WHEELS_ON</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[WHEELS_ON]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>WHEELS_ON</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>TAXI_IN</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[TAXI_IN]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>TAXI_IN</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>SCHEDULED_ARRIVAL</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[SCHEDULED_ARRIVAL]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>SCHEDULED_ARRIVAL</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ARRIVAL_TIME</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[ARRIVAL_TIME]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>ARRIVAL_TIME</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ARRIVAL_DELAY</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[ARRIVAL_DELAY]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>ARRIVAL_DELAY</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DIVERTED</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[DIVERTED]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>DIVERTED</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>CANCELLED</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[CANCELLED]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>CANCELLED</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>CANCELLATION_REASON</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[CANCELLATION_REASON]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>CANCELLATION_REASON</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AIR_SYSTEM_DELAY</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[AIR_SYSTEM_DELAY]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>AIR_SYSTEM_DELAY</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>SECURITY_DELAY</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[SECURITY_DELAY]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>SECURITY_DELAY</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AIRLINE_DELAY</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[AIRLINE_DELAY]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>AIRLINE_DELAY</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LATE_AIRCRAFT_DELAY</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[LATE_AIRCRAFT_DELAY]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>LATE_AIRCRAFT_DELAY</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>WEATHER_DELAY</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[WEATHER_DELAY]</local-name>
+            <parent-name>[flights.csv]</parent-name>
+            <remote-alias>WEATHER_DELAY</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[airlines.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>IATA_CODE_Airline</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[IATA_CODE_Airline]</local-name>
+            <parent-name>[airlines.csv]</parent-name>
+            <remote-alias>IATA_CODE_Airline</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AIRLINE</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[AIRLINE (airlines.csv)]</local-name>
+            <parent-name>[airlines.csv]</parent-name>
+            <remote-alias>AIRLINE</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[airports.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>IATA_CODE_Airport</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[IATA_CODE_Airport]</local-name>
+            <parent-name>[airports.csv]</parent-name>
+            <remote-alias>IATA_CODE_Airport</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AIRPORT</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[AIRPORT]</local-name>
+            <parent-name>[airports.csv]</parent-name>
+            <remote-alias>AIRPORT</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>CITY</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[CITY]</local-name>
+            <parent-name>[airports.csv]</parent-name>
+            <remote-alias>CITY</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>STATE</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[STATE]</local-name>
+            <parent-name>[airports.csv]</parent-name>
+            <remote-alias>STATE</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>COUNTRY</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[COUNTRY]</local-name>
+            <parent-name>[airports.csv]</parent-name>
+            <remote-alias>COUNTRY</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LATITUDE</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[LATITUDE]</local-name>
+            <parent-name>[airports.csv]</parent-name>
+            <remote-alias>LATITUDE</remote-alias>
+            <ordinal>41</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LONGITUDE</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[LONGITUDE]</local-name>
+            <parent-name>[airports.csv]</parent-name>
+            <remote-alias>LONGITUDE</remote-alias>
+            <ordinal>42</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Airline Name' datatype='string' name='[AIRLINE (airlines.csv)]' role='dimension' type='nominal' />
+      <column caption='Airline' datatype='string' name='[AIRLINE]' role='dimension' type='nominal' />
+      <column caption='Airline Delay' datatype='real' name='[AIRLINE_DELAY]' role='measure' type='quantitative' />
+      <column caption='Airport' datatype='string' name='[AIRPORT]' role='dimension' type='nominal' />
+      <column caption='Air System Delay' datatype='real' name='[AIR_SYSTEM_DELAY]' role='measure' type='quantitative' />
+      <column caption='Air Time' datatype='real' name='[AIR_TIME]' role='measure' type='quantitative' />
+      <column caption='Arrival Delay' datatype='real' name='[ARRIVAL_DELAY]' role='measure' type='quantitative' />
+      <column caption='Arrival Time' datatype='real' name='[ARRIVAL_TIME]' role='measure' type='quantitative' />
+      <column caption='Cancellation Reason' datatype='string' name='[CANCELLATION_REASON]' role='dimension' type='nominal' />
+      <column caption='Cancelled' datatype='integer' name='[CANCELLED]' role='measure' type='quantitative' />
+      <column caption='City' datatype='string' name='[CITY]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+      <column caption='Country' datatype='string' name='[COUNTRY]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column datatype='integer' name='[DAY]' role='dimension' type='quantitative' />
+      <column caption='Day Of Week' datatype='integer' name='[DAY_OF_WEEK]' role='dimension' type='quantitative' />
+      <column caption='Departure Delay' datatype='real' name='[DEPARTURE_DELAY]' role='measure' type='quantitative' />
+      <column caption='Departure Time' datatype='real' name='[DEPARTURE_TIME]' role='measure' type='quantitative' />
+      <column caption='Destination Airport' datatype='string' name='[DESTINATION_AIRPORT]' role='dimension' type='nominal' />
+      <column caption='Distance' datatype='integer' name='[DISTANCE]' role='measure' type='quantitative' />
+      <column caption='Diverted' datatype='integer' name='[DIVERTED]' role='measure' type='quantitative' />
+      <column caption='Elapsed Time' datatype='real' name='[ELAPSED_TIME]' role='measure' type='quantitative' />
+      <column caption='Flight Number' datatype='integer' name='[FLIGHT_NUMBER]' role='dimension' type='ordinal' />
+      <column caption='IATA CODE Airline' datatype='string' name='[IATA_CODE_Airline]' role='dimension' type='nominal' />
+      <column caption='IATA CODE Airport' datatype='string' name='[IATA_CODE_Airport]' role='dimension' type='nominal' />
+      <column caption='Late Aircraft Delay' datatype='real' name='[LATE_AIRCRAFT_DELAY]' role='measure' type='quantitative' />
+      <column aggregation='Avg' caption='Latitude' datatype='real' name='[LATITUDE]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column aggregation='Avg' caption='Longitude' datatype='real' name='[LONGITUDE]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+      <column caption='Month' datatype='integer' name='[MONTH]' role='dimension' type='quantitative' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Origin Airport' datatype='string' name='[ORIGIN_AIRPORT]' role='dimension' type='nominal' />
+      <column caption='Scheduled Arrival' datatype='integer' name='[SCHEDULED_ARRIVAL]' role='measure' type='quantitative' />
+      <column caption='Scheduled Departure' datatype='integer' name='[SCHEDULED_DEPARTURE]' role='measure' type='quantitative' />
+      <column caption='Scheduled Time' datatype='real' name='[SCHEDULED_TIME]' role='measure' type='quantitative' />
+      <column caption='Security Delay' datatype='real' name='[SECURITY_DELAY]' role='measure' type='quantitative' />
+      <column caption='State' datatype='string' name='[STATE]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column caption='Tail Number' datatype='string' name='[TAIL_NUMBER]' role='dimension' type='nominal' />
+      <column caption='Taxi In' datatype='real' name='[TAXI_IN]' role='measure' type='quantitative' />
+      <column caption='Taxi Out' datatype='real' name='[TAXI_OUT]' role='measure' type='quantitative' />
+      <column caption='Weather Delay' datatype='real' name='[WEATHER_DELAY]' role='measure' type='quantitative' />
+      <column caption='Wheels Off' datatype='real' name='[WHEELS_OFF]' role='measure' type='quantitative' />
+      <column caption='Wheels On' datatype='real' name='[WHEELS_ON]' role='measure' type='quantitative' />
+      <column caption='Year' datatype='integer' name='[YEAR]' role='dimension' type='quantitative' />
+      <drill-paths>
+        <drill-path name='COUNTRY, STATE, CITY'>
+          <field>[COUNTRY]</field>
+          <field>[STATE]</field>
+          <field>[CITY]</field>
+        </drill-path>
+      </drill-paths>
+      <layout dim-ordering='alphabetic' dim-percentage='0.538462' measure-ordering='alphabetic' measure-percentage='0.461538' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='flights+' name='federated.0h1rp9r0376yr20zj9hl116ygyo5' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0h1rp9r0376yr20zj9hl116ygyo5'>
+            <column caption='Airline Name' datatype='string' name='[AIRLINE (airlines.csv)]' role='dimension' type='nominal' />
+            <column caption='Airline' datatype='string' name='[AIRLINE]' role='dimension' type='nominal' />
+            <column caption='Arrival Delay' datatype='real' name='[ARRIVAL_DELAY]' role='measure' type='quantitative' />
+            <column caption='Cancelled' datatype='integer' name='[CANCELLED]' role='measure' type='quantitative' />
+            <column caption='Departure Delay' datatype='real' name='[DEPARTURE_DELAY]' role='measure' type='quantitative' />
+            <column caption='State' datatype='string' name='[STATE]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[AIRLINE (airlines.csv)]' derivation='None' name='[none:AIRLINE (airlines.csv):nk]' pivot='key' type='nominal' />
+            <column-instance column='[AIRLINE]' derivation='None' name='[none:AIRLINE:nk]' pivot='key' type='nominal' />
+            <column-instance column='[STATE]' derivation='None' name='[none:STATE:nk]' pivot='key' type='nominal' />
+            <column-instance column='[ARRIVAL_DELAY]' derivation='Sum' name='[sum:ARRIVAL_DELAY:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[CANCELLED]' derivation='Sum' name='[sum:CANCELLED:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[DEPARTURE_DELAY]' derivation='Sum' name='[sum:DEPARTURE_DELAY:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0h1rp9r0376yr20zj9hl116ygyo5].[none:STATE:nk]'>
+            <groupfilter function='level-members' level='[none:STATE:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0h1rp9r0376yr20zj9hl116ygyo5].[none:STATE:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+            <format attr='stroke-color' id='refline0' value='#a0cbe8' />
+            <format attr='fill-above' id='refline1' value='#00000000' />
+            <format attr='fill-below' id='refline1' value='#00000000' />
+            <format attr='stroke-color' id='refline1' value='#a0cbe8' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <size column='[federated.0h1rp9r0376yr20zj9hl116ygyo5].[sum:CANCELLED:qk]' />
+              <lod column='[federated.0h1rp9r0376yr20zj9hl116ygyo5].[none:AIRLINE:nk]' />
+              <lod column='[federated.0h1rp9r0376yr20zj9hl116ygyo5].[none:AIRLINE (airlines.csv):nk]' />
+            </encodings>
+            <reference-line axis-column='[federated.0h1rp9r0376yr20zj9hl116ygyo5].[sum:DEPARTURE_DELAY:qk]' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-pane' value-column='[federated.0h1rp9r0376yr20zj9hl116ygyo5].[sum:DEPARTURE_DELAY:qk]' z-order='1' />
+            <reference-line axis-column='[federated.0h1rp9r0376yr20zj9hl116ygyo5].[sum:ARRIVAL_DELAY:qk]' enable-instant-analytics='true' formula='average' id='refline1' label-type='automatic' probability='95' scope='per-pane' value-column='[federated.0h1rp9r0376yr20zj9hl116ygyo5].[sum:ARRIVAL_DELAY:qk]' z-order='2' />
+          </pane>
+        </panes>
+        <rows>[federated.0h1rp9r0376yr20zj9hl116ygyo5].[sum:ARRIVAL_DELAY:qk]</rows>
+        <cols>[federated.0h1rp9r0376yr20zj9hl116ygyo5].[sum:DEPARTURE_DELAY:qk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows saved-dpi-scale-factor='1.5' source-height='44'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0h1rp9r0376yr20zj9hl116ygyo5].[sum:CANCELLED:qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0h1rp9r0376yr20zj9hl116ygyo5].[none:AIRLINE (airlines.csv):nk]</field>
+            <field>[federated.0h1rp9r0376yr20zj9hl116ygyo5].[none:AIRLINE:nk]</field>
+            <field>[federated.0h1rp9r0376yr20zj9hl116ygyo5].[none:AIRPORT:nk]</field>
+            <field>[federated.0h1rp9r0376yr20zj9hl116ygyo5].[none:STATE:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{FDD3190C-F99B-452C-AB0A-62A3E7E8394F}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABYlAAAWJQFJUiTw
+      AAAdLUlEQVR4nO2dWWwc+Z3fP1XV1Xezed+URFIUKUoUpZHm8jgz4/XYzu56drKxgfVuskEQ
+      BAkW3s1LXvNgJEhejRjBJmsjB+CNF+s468CwZ+H1tbMzmFnPqYv3JR5NstnsZt9XXXmgREsy
+      SbGpblaR/H8AAd3q4q9+dXzrf39LsizLQiA4pch2JyAQ2MmRCcAwjH1/LxaLNd13tQu66Vge
+      zTB34tcKy7JqGv+4xq5WfMeUALU+WdWmoJk8kNRxrkXWMvdan5dqxHeMAAQCOziUABKxNeYX
+      V7AsyKbiRNY3AUhvxVjbSAAG+VwRyyiTydWuaiMQPC2uyv/EBMVLcyDJ2OQChXyW9pDJigzr
+      qzEa1SIx/wDxpTh6OU7fpWsHiirLojASHD2HEICMbJb4+PYcFy8OEvO00NUh88En89T39HE2
+      VGBsM0VsfoLWC8P4VRnDMDBNc986m2EY6Lr+FIeyN6ZpYpomkiRVNaahG+iWWfNG8IN/teC0
+      N4IrF4ChgTvEp164zvjMEoalEpMsOvrOsRlLsJYv0NbZi7vvIlp2g1ypm4BHAUBRlD3DSpKE
+      y3UIPR4kZcNAluWqCkCWZRSXgkvZLrlqlbtlWZimue+5e1pqlXutY1cjfuV/LbvIpyJslCwu
+      j1whu7VBsmBxtr2VoGKQ1cK0hgL4u10EAp2ksgUCnuBTJSkQHBbLsohu5ViLZ+hpCdMU9j3y
+      IJSOaiTYMIx9n2L5fB6/31+zfVe7BLi1muVimx+3IqPr+rEtAWqZey1jHyS+ZVm8+fez6IbJ
+      mbY65iJbNNb5+My1czv3gmNanqIRLKg2i+spFFnijU8Pcm2ggy+/OkwqV2JjK7ezjWPuOtM0
+      7U5BcMKYWo4z0t/6yP8NnWliYS25890xAjjOo6kCZ9LZHGQpmn7k/yKxDG2NgZ3vjhGAQFBt
+      Lve2MrMS56OpVTZTed67u0wiU+Bce/3ONo4RgGgDCKqNJEn8k9dGsIB37y7j97n58ivDj3SG
+      1LaTViCwGUWRuTHYCYO7/+6Yx65oBAvswDECEAjsQAhAcKpxjABqOddFINgLxwhAtAEEduAY
+      AYiBMIEdOEYAAoEdOEYA1ZypKRAcFMcIQIwEC+zAMXfdcbNFEZwMHCMAgcAOhAAEpxrHCEC0
+      AQR2IO46wanmUAIoZFPcW1rBtCC2tsLc3BxFzSSTjBPd3AIM8vkSllEmmy8dKKYYCRbYwaGc
+      4eJbGRqDcHdyEaucZGhoCJeZ487COg1qEcV3gc3FOEY5wbnh0epnLRBUiUM5w7W11HPr1l0G
+      Rq6yOpdi4u4tmluaqGtuozdUYCz2K2e4gFs5kDOcaZrCGW4XhDNcbeMfqgS4eWuM0RvP4TI1
+      Wnt6cRXWWcur5PNbrBcKtHacxd13kXJmg1y5m4D7yc5wqqoKZ7hdEM5wtY1f+V9bJuFQiNmp
+      Sdo6e9CyCVKGjwt93WxtrJLVQnTed4YL+ju2neHcT3aGE20AgR1ULgDJxYXh4V99rw/tfGxq
+      66Tp/ue6uu3QDfWeA4UVs0EFdiC6QQWnGscIQAyECezAMXedmA4tsAPHCEDMBhXYgWMEIBDY
+      gRCA4FTjGAEIWxSBHThGAGIcQGAHjhGAGAkW2IFjBCAQ2IFjBCDGAQR24BgBiJFggR045q4T
+      bQCBHThGAKIXSGAHjhGAQGAHjhGAaAMI7EDcdYJTjWMEIBrBAjtwjAAEAjtwjADEQJjADg7n
+      DJdLs7yyhmlBPpO87wYH2dQWsUQKMCkUSliGRq5wMGc40QgW2MGhfIE240lCPhgbn6ZYKNAc
+      MFnFIrIUoV4tIXkG2VyMY2oJzgwdzBlOtAEEdnAoZ7iOtiZu3rzDubNdrOfrONsh88Ens9T3
+      9NH3mDNc0HMwZzhd14Uz3C4IZ7jaxj9UCfDJzbuMXn8O1SqwGF0mrpi0nTtDIpEkWizQ0nYG
+      d+9FSpkN8uVu/AdwhlMURTjD7YJwhqtt/EM5w9UFg8xOT9LWdYbejjqSBYveznaC8goZLcC5
+      um1nuFCgnWS2gP8AznCiDSCwg0M5ww1euvTQfwRpvP+pub2b5vufw+Ht0I31Bwx7wnuBDNNk
+      ainOWjxDf1cjZ9vCJ/6YjwOOeeyeZFsU3TD5q7cmiafznO9qYmIxxk8/nBcTAB2AYwRwkplc
+      2qSzOcSnR85wtj3MP3zuPPmSRnQrZ3dqpx4hgCMgEktzrqN+p8ojSRKdzSFiybzNmQkcI4CT
+      bItytr2emeX4TpXHsiyWoinaGwM2ZyaobR9VBZzk+vBAdyPTy3F+8uE8nc0hZlcStNYHaA77
+      7U7t1OMYAZzkkWBFlvniixdYjKbYSOZ4friL9sag6AVyAI4RwElHliV6O+rp7Thgv7DgSHBM
+      G0A8DQV24BgBiJFggR3sedcVcxm20kfXT32S2wAC57JnG8DQCrz187fYSmbpvTjKp54dxe2q
+      XVflSe4FEjiXPUsArZQnkUji8gUJmgn+z1+/fZR5HWsKJY3JpU02kjkhbIezZwngCzZw7uwZ
+      ippBsPMiv/dCe00TOSltgK1Mge+/PclgTxO356L0dtRzY7BTNPIdyp533er0R9yZXUEyCtye
+      38B1gkdqq8n7ExFeu97HSyNn+NIrF5m4t4lhiPaNU9lTAM3d53n2mVFikQhtjaG9NqsaJ6UR
+      LMsSxv1jsSywsEA8/R3LrlWgZCzC+MwKAOev3KCzLXykSR1nXhju5v++NcFcZIvoVo5rAx0o
+      shCAU9lVAKrHT3NzM6ZhYAF+r6fmiZyUOnLI7+H3X7vMejzLjaFOwgHPiTm2k8iuVaBAXQMt
+      fpMf/OAH3Ln5S3789+O1T+SENIIBPKqLs+311Ae94uZ3OHt3g5YLqP4wqysrBAO+midyUtoA
+      guPF7t2gloU72EprnQv3uRd54+UrNU9E9JcL7GDXEsAycvzpN7/Ny5/7IuHCAj/5cOaR37Op
+      OEsr6wDMT08wPj5OvmwSWZxjcvYeFhrxzRTlXJJ4qlD7oxAIDsnuVaD0OhlXiPXIMvVNzUzO
+      zD/yc1k3yKSSgEEileNsbx8efYvNvEKzK89yIsvGepyxqQXCIe/BEjlBbQDB8WH3KlBdN//0
+      9Ve3P/sH+MrV7kd+bmxqYmNjC5Do6eogMjeGpQbwBptpCCmsJvPEFmdo6b+AS5YO5AxnmqZw
+      htuFwzjDlTWDsXsxgj4357sa9j1u4Qy3C5LLy6VHvH8exiK2vs7m5ibJrRYy981v/fUtrC0t
+      cjeqcW7kMu78EKqVZCOZo7V+e+3rfut+S6WScIbbhUqd4XTD5Ht/N8bQmWaWNtJENrN89nrv
+      vscunOEeIzI3xk/e/mDn++VnX+bGpb6d7z5/kMsjl/D4/HR7vehWB0G/j7Z6P7op4fd4CAx0
+      obh60HTRu3OUxFN56oNenh3qxLQsvv3j21hiMHpPdhVAV/8lvhSu42fvfIzPo+IPPmxtKBGs
+      e3hk2P2rTx7fzjeXuh3arR6sbl/rJ8Vxx7Is1uJZ5te26O9s2HNNcTjoJV/U+GRmnUy+REdT
+      UNz8+7Dn3RlfmSFdtlDReO+TyZonUqv6/0nh9lyUd+4s0VLv5+1bS9yZ39h1O6/bxT/6B0OY
+      pkVbY5DP3egXg3H7sOdjt/PCDT7bXmR5eozXX7xxlDkJduHWXJTf+41LeFQX59rq+e4vxrjS
+      37brtl63ixtDnUec4fFkTwHkM1u89bN3sCSFxnNZWuuFh42dSJKEaW73BBmmJZ7qVWJPAbg9
+      PoJ+L/GtJKlM7dcGi3GA/XnxUjff+9txejsamF/b4qWRHrtTOhHsKoDMVoxkOktdSwe95y/Q
+      3NZw1HkJHqO/s4GWsJ/1rRwj/a3U+Ws/Q/c0sKsAtHIRS3bhUV2Uy+UjWdEkJsPtjyRJhINe
+      wsGDjawLDsau9Y7Gth78Zpr5tQyjV6/S2SJKAMHJZM+Kt6z6SK9O8Z3vfIebU/dqnoho1Ans
+      YG9foFKOM5de5LdfuXYkiYhGsMAO9hSA4vbzyd/9BdGFW1x5bCpELRBtAIEd7PnYbejs40++
+      +q/oag5jmLVfrCIWxAjsYNcSwMpt8J++8b8YGuhlYmWLf/fF/qPOSyA4EnYvAbx1fPrZEfK5
+      DMmNCPORzdonItoAAhvYfT2A4uWV134TgC9nU2RKta+eiF4ggR08cQ6yLxjG9+QXvT81J/k9
+      wQLnIuodglONEIDgVOMYAZzk9wQLnIsQgOBUc+QCmJ+fZ3Pz17tVxUCYwA4OtRJ9bXmeRM7i
+      0lAfU2N3yJVMLo+OMDd+l4IucWV0kLWVFEFPEc3TQmv9treoZVkkk0nS6TSmaaKqKvF4nEAg
+      wMLCAufOnSORSFAul2lra2NtbY2+vj7W19fJ5/P09PQQiUQAuHr1qhg7EDw1hxJAc3snqdlF
+      zHyCktrA5S4YH5tEDbYxFMgxF01RiEbZdMtcHT2zY+yUTqeJRqNomsbw8DDj4+NYlkUkEiEQ
+      CDA7O4uiKLzwwgssLi4iSRLz8/N4PB76+vqIRCJEo1FkWSadThMOH+y9BZUaSx0s5qOmVbUq
+      wY4q/nGLXa34hxKAqqr3EzCRZAVFAUPT8SgyLpeMUTDJZlL4m5uRAPN+oisrK7z66qskEgk2
+      NjbIZDJ0d3fj8/nIZDI7JYAkSUSjUXw+H6ZpkkqlyGQyNDc3EwqFCIVC+P3+A0+ge2AuVd3B
+      NgvLtDAlcyd+LXhwkWsZ/zjGrlZ8yapYQiYLM1PcW44yPDrKxtI8Rd3k8tVrTN++SdmQGL1x
+      iZX5BCFfkZK7ie6WMIZhIEnSzk34YLcPvheLRTye7WV+sizvWClKkkQkEiEWi3H27FkaGhqw
+      LKsip7f9nOF0w+SDyQjzq0k8qsKLl7rpaql7Ysxbq1kutvlxKzK6rjvGGa5Sapl7LWNXK/4h
+      BHA4skWNzfzeo72GYex5kbO5LIZhEK473KuaTNNEkiUkfl0Ac5EEyVyRy72tFEo6H0xGeOXq
+      uSe+E3lxq0hX2LPtfWoaKHJtblDrfklTq/ZOLXOvZexqxT8yOzZFhoB7P29QDY/bvetvAffT
+      vaPMNEGS5V8TgG4YrMVSfOG5fkCCgAf/SA/j8+u8dPnMvjHdikzArdwXADW80NslgFyzm7R2
+      udf2vFQn/pEJwK3ItAT3Trag6Ph8ak32bRjyrlWgsi6DrtEcUHd+04pFPJi0BPfPZTVdoing
+      ul8Fko5xFah2udcydrXin+p+RFWRaQr7uT0XxTBM8kWNt27d4+pAbV8KLnAOjhFALXoLyrpB
+      vqjt+bskSbx2vZd4usB3fnqH//6jT1iKpvn5xwskMuLNNqeBE2vJrOkGf/mzu+iGyWevn6On
+      tX7X7VSXwmeuncOy4Lu/GOMLz/Wj6Sa/+HiBL70yfMRZC44ax5QA1V4QoxsmumnRHA6Qypae
+      uG9ZlvB7VaJbOaJbWYK+3RvkgpOFY0qAanfz+TwqX3i2n2S2yED3wYy9Pv9sP2/fWkRRZD5z
+      rbeq+QiciWMEUIs2QGdziM7m0IFXm3ndLj73rDAAOE04pgokZoMK7MAxAhAI7MAxAhBTmwV2
+      4Ji7TtiiCOzAMQIQtigCO3CMAAQCOxACEJxqHCMA4QohsAPHCECMAwjswDECEC/IENiBYwQg
+      ENiBYwRQ6TiAZVmsxNLkCuUaZSQ4DThGAJWOBBumxbd/fJv3xldqlJHgNPDUs0Hv3vwQ2e3n
+      3PkLLE2PkddlroxeYH05RdBbouxu3nGG249K2wCKLPEnX3oOr9sxE1oFx5CnvHt0NjeTnBno
+      QCluYvhbGQrkmF9PU4zFiLksro72HMjd7DAuXwHvA4Ou/f+uZg5l1tE5tx1H97YT6wz38J+/
+      +tpnSa3NMnWvjBpuweVyoeUNUltxAm1tSIBhPtk9zTTNmjuUVXO+kXk/pilJR+KuVqu5Uqfd
+      Ge6pBGCWC0zMzKEV8pwZGmFpaoxbUbhy/RIrxX5CviIrsRTdLdu+PvsNdrlcrpoOhlXiJHeg
+      eJKErMgoioxlWTXL/YE7Xi3jH8fY1Yr/VAKQ3T4uXbq8873x+o2dz/0DXU8TWiA4EhzTCyQG
+      wgR24BgBCAR24BgBHKZ+Xijp/PDdaT6ZWRNziQSHwjECOMySyO/97RjXBtpZ3cwwvRyvQVaC
+      k45jBHCYNoBumIT8HkJ+D8WyWFEmqBzHCOAwVZg3Pj3ED9+bpqwbjPS11iArwUnnWM8jaKzz
+      8QevjdidhuAY45gSQNiiCOzAMXedsEUR2IFjBCBsUQR2cKzbAKeJW3NR3p+I0Bz288ZLg8iy
+      KDGrgWNKAMH+vD8R4V/+9jVCPjf31pN2p3NicIwAhC3K/gS8Ku9PRLi3nqQ57Lc7nRODYwSw
+      1zjAVqbALz5ewDRP91SHL78yjNft4ndfHiLk99idzonBMQLYayQ4lszz4dQa2ilvJLtVhdHz
+      7TTV+REdZtXD8Y3gge5G/u1XXkQWV11QAxwjgL3GASTp8fe7CwTVwzFVIDESLLADx9x1YkWY
+      wA4cIYBsocy3fnSLsn66G7qCo8cRAvB7VH7nU+dRFUekIzhFVK8RbJlMjd/ddoa7MsD6Spqg
+      t0xJbXyiM5wsS7Q3BsWEOMGRUzUBaJkNdG8LFwI55qJpSpubRCWda1e7HnE3e3zAS7pvLPWw
+      AdRe2+z1/UnbPLzfp4mzV867GTQ9Kc4DsT9pm8eNsfaLe5jj2e26VOsaHOa8VLrNg/iHjVM1
+      AZimiexSUVUXWl4nEVunrrNzxxlO13UMw9i5YeBXPT+maZLP55EkCVmW99zmwUFUuo1pmiiK
+      giRJTxXn4W3KmkapWMJUtk+qrutVzfnhbXRd3zH2enwbl8uFruuH3u8DR75qn/MHPLjm1TgP
+      j2+jadrOb4qi/JogZFl+ZJbxbttUTQDucAvF2ZvcXIcrNy7jKQ4Q8h7cGc6yLHy+7arS2L0Y
+      pmlVbZmjYRhVd4bzuHW8Pi9uRUbXdVyu2gypWJaFqqr7nju3233o+LXMvZaxYft+etr4VctO
+      klSu3Xh25/v5ge5Dx5qLJDCqKACBYC8cMxL88BPu9U9dsDGTyhGN9+OLY/odH24sSZJ0bG4q
+      0zQpFot2pyE4JI4RwHF1dltZWeHdd9/FNE3S6TSGYZDNZllaWiKRSJDL5YjFYmQyGcbHx3e2
+      mZiYYHNzk2KxyPT0tBgJtwnHVIGOK1tbW/T09JDP55menqaxsXGnVyYajeLxeDAMg6GhIXw+
+      Hx999BH19fVcuHCBqakpyuUyFy5cYHp6mqGhIZuP5vThmBLguFR5HkbXNOLxONlsloWFBXw+
+      H/F4HJ/Px9LSEgCqqjI0NMTi4iKqqu702Hg824taUqkUi4uL+P1ilZcdOKYEOI6zQcuaxo0b
+      NwgGg0SjURoaGlhbW6Orq4tMJoOiKDQ3N6OqKl1dXSwsLNDR0UFTUxPj4+OUSiWuX79OJBKh
+      rq7O7sM5lUjWEVW+DcPYty87l8sRCARqtu9qjwPcWs1ysc2PW9ketKlEwOvr66ytrdHd3U1L
+      S8u+2z48kFcLjvM4QDXiH6kA9qNUKu1UC6rNg6kE1RRAIq9T71OQ748u16oEezBNoVbxn/Rg
+      cmrsasU/MgE8iVpfiGqXAI/Hr+V7tmpZApx2ATim4l3LNkCt2xfHOf5xjV2t+I4pAQQCO1C+
+      9rWvfc2unZuGxvTkBOmCjt9lktMkMokNFG8A1yGt/wqZJLNLa7Q0NRBbW2bu3jLhpmbiq0ss
+      LEVoaGohHt/E51ZY3UxSFzx496NWzDE9PUs8laUh6GVifJKSpRBQLcYnptAkFb2Uw+X2sr4a
+      IRSqq8jCZHM9wr3FJcqWC8oZpmfn8QbrKaY2mZlfwF/XQCqZwO/zEFnboC4UrOjcZLdiLG0k
+      CbphYmIK0+XFZRaZmJxGcgfIZVMEAgFWVlYqzn1uapz1jRj+ugbWFmdYjaVobqrn3uwU0USG
+      pjovsXQRq5AiZ6r43BVUXSyThdlpNpI5GkI+piYnyGsSIa/M5MQkRUNBMgpYiofo+irBUOjA
+      1V1bu0Fjy7ME2/tJR6ZIu5vIlbMk01lG2zoOHVOzJMxyETBZWY8zMtzHxPQMeqnE5cEupmaX
+      kK08G5Fl+i9drSi2JSkMDA4x9vHHTJUznBkYZnbyLvlNib7By0yP36Eu5EcvFclqUsX+PY2t
+      HYQbGrk9MUPMMrhy5RK3x6bB0LkyMsidiTlUVSKXiBLq6K8sd9NgYWUD3SgzndxgcGSUu7dv
+      s4HF8JXtz26vF6mcQZfDFeZusJlIcmF4BLWcIGMFaPekmb23iOGqJ6TFiKVzbCTzlNNbXL26
+      f8/X42ytL5PHQ1dLEysLM7SeHWR5dhw9JdPVf5GFqbtIDSHkfJFU3qCzAh8RW9sA5XIZn8+L
+      S1XQdY3JsTGa2jufqrFaVxe+bxxrIssuFJcf08ggSx4UTwhTy7G1ESGju/CqlR2+6nYzPXaT
+      uo4eJNPEoypIEhgmqC55+6bRy4xNztLWVtlFBrC0IhMTE3h8QSRZRlJUsDQkSUFWvGCWyacT
+      rGzmaAh6K4q9Mj9FQ1snuq6jWxIueTtfC3nns1HKMT4bob21ocLMZQYHh0hHF5i6F8Xr9REM
+      eElsZfD6fIQCLnIFnZX5KdzBxoqvbyaTRlYUFsbvslXS8bpVJFlC0008btf29TY0xsanaG1v
+      q0i8trYB8skoY/PrYJoMnG0ha4WJL08yMPIM/kqKyIfYWFvhzvg0wyOjxFbmUVSFUEsficgU
+      LpdCQ9cQqc0VWus8bGk+Bs62Hzj2+vxdZuIGnU31hLwWq/EcumHR0+Qjmiqhm1AfcNHe2cPY
+      3XGeufEMSgVXY3V5gXzJIJUtElQNTElG9jZi5jZAVnAFW9EKSc62NzK7mmF0+OClQCK2zlY6
+      x+z8PIO9PWTLFrop0+A1yWmgo+KSdAb7zvDxnRmuP3PlwGZkplZiZn4BvZChrr2XtaUFZNNg
+      cOQSE2NTYJpcGRlgPlbEnYsS7h6kJbz/MtmHKWXi3J5exiqXONPbyWo0iWFY9HWEWY5lMUyL
+      9gYv/qYuZsfHuHbj+oGr0DY3gi10TUOSXcgyWEhgWSBJh3aC07QypmkhywqKIqHrJqpbxTIN
+      dMPErao74wKVdi+ahoGm64CE26OilzVklwtFkihrGi6XCljbS+9Mc/spXsFxPIivqm4kyULT
+      dFR1O+aDzw/GBA7bBfigS1jTyrhUNxKgaRouVYWHYlfabazrGqYloboUTMPAZHu1mqlrmMio
+      ioxpWUgSmBYoFfbg6Lq2XVq55EfOu6Ztf5bgUOdd9AIJTjWOGQcQCOxACEBwqhECOE1YFoYh
+      Ft48jBDAkWPynW99g69//ev8/Jd3KvrLH775owNtl43O8O//w3/kG//lz4ilH1quWdrgf/zF
+      mxXt86TjmPUAp4kyQf743/wh3/rTb9LlS/P9N99h4NqnKa7cJJHOcWb0VRrKy7zz4Thv/MG/
+      4G/+8pu0n7/K2z/5Iemyiqqlef2zz/CD99ZRkx8SOvsc0x+8RZYgX/3jP8IoZhl+4fP8xsUA
+      P/zxW7gzM8xHs/yzf/4VAG6++1P+5q33eOG111mYnuNGbwC96zlGzzbafGaOHlEC2IQkK6iK
+      zEefjPHcSy9hFdKo/nr+9Vf/iPjyPcqWm9GhbpZX44Q7zvOVL/8u155/kd9/43OUy2Us06BU
+      1ui7/AKfGgiTUVrp72winS/t7MPt9YKVZWm1wPNXLrCxuf1yvWzR4KUbIyxGM/iMLd6bTXCx
+      u9LBr5OBEIANSOUE3/j61+m58jwvv3Cdj375PrInQDYe4Rv/+b9x8eo11lfusRCJEwr46O7q
+      QpKgvyXA//5/PyWsFPmf332TuvogTU0NeJt6aXElicQzeBQZxe3j1jt/zTf//E0+//nfYrC/
+      gTuzEUJBP00NdSQ2IozNLFMfCvDy88NkjSBu5fgtSa0GYhzAQfzg+3/Fb73xj3Ed2WOpzJ//
+      1z/j+Tf+kIHO+qPaqaMQAhCcav4/ykZ4tUNNiJIAAAAASUVORK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>
